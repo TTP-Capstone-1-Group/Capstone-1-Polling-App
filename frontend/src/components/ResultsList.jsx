@@ -6,11 +6,16 @@ function getBarWidth(voteCount, highestVoteCount) {
   return (voteCount / highestVoteCount) * 100;
 }
 
+function getVoteCount(option) {
+  return option?.votes?.length ?? 0;
+}
+
 function ResultsList({ options = [] }) {
   const sortedOptions = [...options].sort(
-    (a, b) => (b.votes.length ?? 0) - (a.votes.length ?? 0),
+    (firstOption, secondOption) =>
+      getVoteCount(secondOption) - getVoteCount(firstOption),
   );
-  const highestVoteCount = sortedOptions[0]?.votes.length ?? 0;
+  const highestVoteCount = getVoteCount(sortedOptions[0]);
 
   return (
     <section className="results-list">
@@ -20,7 +25,7 @@ function ResultsList({ options = [] }) {
         <p className="empty-state">No results are available.</p>
       ) : (
         sortedOptions.map((option) => {
-          const voteCount = option.votes.length ?? 0;
+          const voteCount = getVoteCount(option);
           const barWidth = getBarWidth(voteCount, highestVoteCount);
 
           return (
