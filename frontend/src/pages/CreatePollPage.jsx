@@ -27,6 +27,14 @@ function CreatePollPage() {
       ),
     );
   }
+  function handleRemoveOption(optionId) {
+    setOptions((currentOptions) => {
+      if (currentOptions.length <= 2) {
+        return currentOptions
+      }
+      return currentOptions.filter((option) => option.id !== optionId)
+    })
+  }
 
   function handleAddOption() {
     setOptions((currentOptions) => {
@@ -52,7 +60,7 @@ function CreatePollPage() {
 
     try {
       setError("");
-    const API_URL = "https://capstone-1-polling-app.onrender.com";
+      const API_URL = "https://capstone-1-polling-app.onrender.com";
 
       const response = await fetch(`${API_URL}/polls/create`, {
         method: "POST",
@@ -79,62 +87,84 @@ function CreatePollPage() {
   }
 
   return (
-    <main className="page-container">
-      <h1>Create a Poll</h1>
+    <main className="create-page">
+      <section className="create-page__hero">
+        <p className="create-page__eyebrow">Create a poll</p>
+        <h1>Build a poll your audience can vote on right away.</h1>
+        <p>
+          Add a title, optional description, and at least two choices.
+        </p>
+      </section>
 
-      <form className="poll-form" onSubmit={handleSubmit} noValidate>
-        <label htmlFor="poll-title">Title</label>
-        <input
-          id="poll-title"
-          type="text"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-          required
-        />
+      <section className="create-page__form-card">
+        <form className="create-page__form" onSubmit={handleSubmit} noValidate>
+          <label htmlFor="poll-title">Title</label>
 
-        <label htmlFor="poll-description">Description</label>
-        <textarea
-          id="poll-description"
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
-          rows="4"
-        />
+          <input
+            id="poll-title"
+            type="text"
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+            required
+          />
 
-        <fieldset>
-          <legend>Options</legend>
+          <label htmlFor="poll-description">Description</label>
+          <textarea
+            id="poll-description"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+            rows="2"
+          />
 
-          {options.map((option, index) => (
-            <div className="form-option" key={option.id}>
-              <label htmlFor={`option-${option.id}`}>
-                Option {index + 1}
-              </label>
-              <input
-                id={`option-${option.id}`}
-                type="text"
-                value={option.text}
-                onChange={(event) =>
-                  handleOptionChange(option.id, event.target.value)
-                }
-                required={index < 2}
-              />
-            </div>
-          ))}
-        </fieldset>
+          <fieldset className="create-page__fieldset">
+            <legend>Options</legend>
 
-        <button type="button" onClick={handleAddOption}>
-          Add Option
-        </button>
+            {options.map((option, index) => (
+              <div className="form-option" key={option.id}>
+                <label htmlFor={`option-${option.id}`}>
+                  Option {index + 1}
+                </label>
 
-        {error && (
-          <p className="error-message" role="alert">
-            {error}
-          </p>
-        )}
+                <div className="form-option__row">
+                  <input
+                    id={`option-${option.id}`}
+                    type="text"
+                    value={option.text}
+                    onChange={(event) =>
+                      handleOptionChange(option.id, event.target.value)
+                    }
+                    required={index < 2}
+                  />
 
-        <button type="submit">Create Poll</button>
-      </form>
+                  {options.length > 2 && (
+                    <button
+                      type="button"
+                      className="form-option__remove"
+                      onClick={() => handleRemoveOption(option.id)}
+                    >
+                      Remove
+                    </button>
+                  )}
+                </div>
+              </div>
+            ))}
+          </fieldset>
+          <div className="create-page__actions">
+            <button type="button" onClick={handleAddOption}>
+              Add Option
+            </button>
 
+            <button type="submit">Create Poll</button>
+          </div>
+          
+          {error && (
+            <p className="error-message" role="alert">
+              {error}
+            </p>
+          )}
 
+        </form>
+      </section>
     </main>
   );
 }
