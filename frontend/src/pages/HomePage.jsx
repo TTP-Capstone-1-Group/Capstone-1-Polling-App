@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 
 function HomePage() {
-const [Polls, setPolls]= useState([])
+  const [polls, setPolls] = useState([])
 
 
   async function allPolls() {
@@ -13,26 +13,35 @@ const [Polls, setPolls]= useState([])
     let data = await response.json();
     console.log(data)
     setPolls(data);
-    
+
   }
-    useEffect(() => {
-      allPolls();
-    }, []);
-    
+  useEffect(() => {
+    allPolls();
+  }, []);
+
   return (
-    <main className="page-container">
-      <h1>All Polls </h1>
-      {Polls.length === 0 ? (
-        <p className="empty-state">No polls have been created.</p>
-      ) : (
-        <div className="poll-list">
-          {Polls.map((poll) => (
-            <PollCard key={poll.id} poll={poll} mode="summary" />
-          ))}
-        </div>
-      )}
+    <main className="home-page">
+      <section className="home-hero">
+        <p className="home-hero__eyebrow">Capstone Project</p>
+        <h1>Build polls, collect votes, and watch the results update.</h1>
+        <p>
+          This app lets visitors create a poll, vote on options, and see who is
+          winning right away.
+        </p>
+      </section>
+
+      <section className="home-catalog">
+        {polls.length === 0 ? (
+          <p className="empty-state">Patience is a virue....</p>
+        ) : (
+          <div className="poll-list">
+            {polls.map((poll) => (
+              <PollCard key={poll.id} poll={poll} mode="summary" />
+            ))}
+          </div>
+        )}
+      </section>
     </main>
   );
 }
-
 export default HomePage;
