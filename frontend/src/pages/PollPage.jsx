@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import PollCard from "../components/PollCard";
 
 
 function PollPage() {
@@ -8,7 +9,6 @@ function PollPage() {
 
   const [poll, setPoll] = useState(null);
   const [selectedOptionId, setSelectedOptionId] = useState(null);
-  import PollCard from "../components/PollCard";
 
   async function getPoll() {
     const API_URL = "https://capstone-1-polling-app.onrender.com";
@@ -35,7 +35,7 @@ function PollPage() {
       return;
     }
     const API_URL = "https://capstone-1-polling-app.onrender.com";
-    fetch(`${API_URL}/polls/${pollId}/vote`, {
+    await fetch(`${API_URL}/polls/${pollId}/vote`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ optionId: selectedOptionId }),
