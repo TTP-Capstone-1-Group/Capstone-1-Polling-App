@@ -5,8 +5,8 @@ function PollCard({
   poll,
   mode = "summary",
   selectedOptionId = null,
-  onOptionSelect = () => {},
-  onVote = () => {},
+  onOptionSelect = () => { },
+  onVote = () => { },
   isSubmitting = false,
 }) {
   if (!poll) {
@@ -18,6 +18,9 @@ function PollCard({
   const isSummaryMode = mode === "summary";
   const isVoteMode = mode === "vote";
   const isResultsMode = mode === "results";
+  const descriptionText =
+    poll.description?.trim() || "No description was added for this poll yet.";
+
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -34,7 +37,7 @@ function PollCard({
       <header className="poll-card__header">
         <h2>{poll.title}</h2>
 
-        {poll.description && <p>{poll.description}</p>}
+        <p>{descriptionText}</p>
       </header>
 
       {isVoteMode && (
