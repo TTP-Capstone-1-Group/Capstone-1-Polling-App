@@ -21,15 +21,15 @@ function PollPage() {
   useEffect(() => {
     getPoll();
   }, [pollId]);
-
-  if (!poll) {
+  
+if (!poll) {
     return (
       <main className="page-container">
         <p>Loading...</p>
       </main>
     );
   }
-
+  
   async function handleVote() {
     if (selectedOptionId === null) {
       return;
@@ -45,16 +45,30 @@ function PollPage() {
   }
 
   return (
-    <main className="page-container">
-      <h1>Vote</h1>
+    <main className="home-page">
+      <section className="home-hero">
+        <p className="home-hero__eyebrow">Cast Your Vote</p>
+        <h1>Choose your favorite option.</h1>
+        <p>
+          Select one answer below, submit your vote, and then see the results.
+        </p>
+      </section>
 
-      <PollCard
-        poll={poll}
-        mode="vote"
-        selectedOptionId={selectedOptionId}
-        onOptionSelect={setSelectedOptionId}
-        onVote={handleVote}
-      />
+      <section className="home-catalog">
+        {!poll ? (
+          <p className="empty-state">Loading poll...</p>
+        ) : (
+          <div className="poll-list">
+            <PollCard
+              poll={poll}
+              mode="vote"
+              selectedOptionId={selectedOptionId}
+              onOptionSelect={setSelectedOptionId}
+              onVote={handleVote}
+            />
+          </div>
+        )}
+      </section>
     </main>
   );
 }
