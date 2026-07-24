@@ -73,19 +73,6 @@ pollsRouter.post("/:id/vote", async (req, res, next) => {
     next(err);
   }
 });
-pollsRouter.get("/:id/results",async (req,res, next)=>{
-  try {
-    const votes= await Vote.findByPk(req.params.id)
-   console.log(poll);
-    if (!votes) {
-  return res.sendStatus(404);
-}
-
-res.json(poll);
-  } catch (err) {
-    next(err);
-  }
-});
 
 pollsRouter.delete("/:id", async (req, res, next) => {
   try {
