@@ -21,7 +21,15 @@ function PollPage() {
   useEffect(() => {
     getPoll();
   }, [pollId]);
-
+  
+if (!poll) {
+    return (
+      <main className="page-container">
+        <p>Loading...</p>
+      </main>
+    );
+  }
+  
   async function handleVote() {
     if (selectedOptionId === null) {
       return;
