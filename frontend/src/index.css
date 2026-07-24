@@ -224,3 +224,10 @@ code {
   display: flex;
   gap: 1rem;
 }
+.poll-card__actions a {
+  background: var(--accent);
+}
+
+.poll-card__vote-form button {
+  background: var(--accent);
+}

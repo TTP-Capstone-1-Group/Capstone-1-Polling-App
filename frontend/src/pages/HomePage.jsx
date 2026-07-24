@@ -32,7 +32,7 @@ function HomePage() {
 
       <section className="home-catalog">
         {polls.length === 0 ? (
-          <p className="empty-state">No polls have been created.</p>
+          <p className="empty-state">Patience is a virue....</p>
         ) : (
           <div className="poll-list">
             {polls.map((poll) => (
