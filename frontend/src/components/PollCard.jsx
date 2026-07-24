@@ -10,13 +10,16 @@ function PollCard({
   onVote = () => {},
   isSubmitting = false,
 }) {
-  if (!poll) {
-    return <p className="empty-state">Poll data is unavailable.</p>;
-  }
- useEffect(() => {
-     console.log(poll)
-  }, []);
-
+  useEffect(() => {
+      if (poll) {
+        console.log("Current Poll:", poll);
+      }
+    }, [poll]);
+  
+    // 2. Perform the guard clause check AFTER the hook
+    if (!poll) {
+      return <p className="empty-state">Poll data is unavailable.</p>;
+    }
 
   const options = Array.isArray(poll.options) ? poll.options : [];
 
