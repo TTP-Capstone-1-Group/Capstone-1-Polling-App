@@ -11,9 +11,10 @@ function HomePage() {
     const API_URL = "https://capstone-1-polling-app.onrender.com";
     let response = await fetch(`${API_URL}/polls`);
     let data = await response.json();
-    console.log(data)
-    setPolls(data);
+    console.log(data);
 
+    const sortedPolls = [...data].sort((a, b) => b.id - a.id);
+    setPolls(sortedPolls);
   }
   useEffect(() => {
     allPolls();
@@ -44,4 +45,5 @@ function HomePage() {
     </main>
   );
 }
+
 export default HomePage;
