@@ -9,6 +9,7 @@ function PollPage() {
 
   const [poll, setPoll] = useState(null);
   const [selectedOptionId, setSelectedOptionId] = useState(null);
+  const [copied, setCopied] = useState(false);
 
   async function getPoll() {
     const API_URL = "https://capstone-1-polling-app.onrender.com";
@@ -21,15 +22,25 @@ function PollPage() {
   useEffect(() => {
     getPoll();
   }, [pollId]);
-  
-if (!poll) {
+
+  async function handleShare() {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false)
+    }
+  }
+
+  if (!poll) {
     return (
       <main className="page-container">
-        <p>Loading...</p>
+        <p>Loading Poll...</p>
       </main>
     );
   }
-  
+
   async function handleVote() {
     if (selectedOptionId === null) {
       return;
@@ -45,31 +56,41 @@ if (!poll) {
   }
 
   return (
-    <main className="home-page">
-      <section className="home-hero">
-        <p className="home-hero__eyebrow">Cast Your Vote</p>
-        <h1>Choose your favorite option.</h1>
-        <p>
-          Select one answer below, submit your vote, and then see the results.
-        </p>
+    <main className="poll-page">
+      <section className="poll-page__hero">
+        <p className="poll-page__eyebrow">Cast Your Vote</p>
+        <h1>Poll Page</h1>
+        <p>Choose one option below and submit your vote.</p>
+
+
+        <div className="poll-page__hero-actions">
+          <button
+            type="button"
+            className="poll-page__share-button"
+            onClick={handleShare}
+          >
+            Share this Poll
+          </button>
+
+          {copied && (
+            <p className="poll-page__share-status">Link copied!</p>
+          )}
+        </div>
       </section>
 
-      <section className="home-catalog">
-        {!poll ? (
-          <p className="empty-state">Loading poll...</p>
-        ) : (
-          <div className="poll-list">
-            <PollCard
-              poll={poll}
-              mode="vote"
-              selectedOptionId={selectedOptionId}
-              onOptionSelect={setSelectedOptionId}
-              onVote={handleVote}
-            />
-          </div>
-        )}
+      <section className="poll-page__content">
+        <div className="poll-page__card-wrap">
+          <PollCard
+            poll={poll}
+            mode="vote"
+            selectedOptionId={selectedOptionId}
+            onOptionSelect={setSelectedOptionId}
+            onVote={handleVote}
+          />
+        </div>
+
       </section>
-    </main>
+    </main >
   );
 }
 
