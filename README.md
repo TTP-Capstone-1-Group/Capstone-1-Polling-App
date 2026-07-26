@@ -26,12 +26,13 @@
 
 ## Features
 
-- [ ] View all polls on a home page
-- [ ] Create a poll with a title, description, and 2+ options
+- [ ] View all polls on a home page, in order of earliest to latest for better user experience
+- [ ] Create a poll with a title, description, and 2+ options, accompanied by option remove buttons
 - [ ] Vote on a poll
-- [ ] See results — vote count per option
+- [ ] Share poll button that copies URL to clipboard on vote poll page
+- [ ] See results — vote count per option – visual representation of votes per option
 - [ ] Mobile-friendly UI
-- [ ] Duplicate an existing poll
+- [ ] Screen-reader friendly
 
 ## Architecture
 
@@ -108,7 +109,7 @@ The app runs at `http://localhost:5173` (Vite's default).
 | Name | Focused on |
 | --- | --- |
 | Yomara Martinez | backend routes + frontend fetching + database and backend deployment |
-| James Dalton | [e.g. backend models] (please add yours)|
+| James Dalton | Project scaffolding & dependency setup + Backend database models & integration + Frontend UI/UX refinement + Ensured team sync and steady project progress|
 | Angel V | [e.g. frontend pages]  (please add yours)|
 
 *Roles overlapping is normal — just say who focused where.*
