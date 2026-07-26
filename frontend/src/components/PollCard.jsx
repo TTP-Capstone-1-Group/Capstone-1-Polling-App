@@ -107,7 +107,9 @@ function PollCard({
           </>
         )}
         {isResultsMode && (
-          <Link to={`/polls/${poll.id}`}>Back to Poll</Link>
+          <Link className="poll-card__action" to={`/polls/${poll.id}`}>
+            Back to Poll
+          </Link>
         )}
       </footer>
     </article>

@@ -78,10 +78,15 @@
   color: var(--text-h);
   background: var(--accent);
   cursor: pointer;
-  gap: 1.25rem;
   transition: background 0.2s ease, transform 0.2s ease, filter 0.2s ease;
 
 }
+.poll-card__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
 
 :root {
   --text: #6b6375;
@@ -326,6 +331,7 @@ code {
   display: flex;
   margin-top: 1rem;
   flex-wrap: wrap;
+  gap: .75rem;
 }
 
 .create-page__actions button,
@@ -335,7 +341,6 @@ code {
   background: var(--accent);
   border-style: none;
   font-size: .95rem;
-  gap: 1rem;
   transition: background 0.2s ease, transform 0.2s ease;
 
 

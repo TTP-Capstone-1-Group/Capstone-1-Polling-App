@@ -59,11 +59,8 @@ function PollPage() {
     <main className="poll-page">
       <section className="poll-page__hero">
         <p className="poll-page__eyebrow">Cast Your Vote</p>
-        <h1>{poll.title}</h1>
-        <p>
-          {poll.description?.trim() ||
-            "Choose one option below and submit your vote."}
-        </p>
+        <h1>Poll Page</h1>
+        <p>Choose one option below and submit your vote.</p>
 
 
         <div className="poll-page__hero-actions">
@@ -76,12 +73,12 @@ function PollPage() {
           </button>
 
           {copied && (
-          <p className="poll-page__share-status">Link copied!</p>
+            <p className="poll-page__share-status">Link copied!</p>
           )}
         </div>
       </section>
-      
-            <section className="poll-page__content">
+
+      <section className="poll-page__content">
         <div className="poll-page__card-wrap">
           <PollCard
             poll={poll}
@@ -91,7 +88,7 @@ function PollPage() {
             onVote={handleVote}
           />
         </div>
-        
+
       </section>
     </main >
   );
