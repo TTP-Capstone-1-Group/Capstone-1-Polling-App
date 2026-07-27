@@ -453,4 +453,32 @@ code {
   background: var(--accent);
   border-color: var(--accent-border);
 }
+.poll-card__action,
+.poll-page__share-button,
+.poll-card__option-button,
+.create-page__actions button,
+.create-page__form button,
+.form-option__remove {
+  color: #f3f4f6;
+}
 
+.home-hero h1,
+.home-hero p,
+.create-page__hero h1,
+.create-page__hero p,
+.poll-page__hero h1,
+.poll-page__hero p {
+  color: #f3f4f6;
+}
+
+.home-hero__eyebrow,
+.create-page__eyebrow,
+.poll-page__eyebrow {
+  color: #cbd5e1;
+}
+
+.poll-card__header h2,
+.poll-card__header p,
+.poll-card legend {
+  color: #f3f4f6;
+}
