@@ -1,8 +1,7 @@
 # Polling App
 
-[One or two sentences describing what the app does and who it's for.]
 
-> *Example: **QuickPoll** — a web app where anyone can create a poll with multiple options, vote, and watch the results update. Built as a team to practice the full PERN stack end to end.*
+> Web app where anyone can create a poll with multiple options, vote, and watch the results update.
 
 ## Live Demo
 
