@@ -12,7 +12,7 @@ function PollPage() {
   const [copied, setCopied] = useState(false);
 
   async function getPoll() {
-    const API_URL = "https://capstone-1-polling-app.onrender.com";
+    const API_URL = import.meta.env.VITE_API_URL;
     let response = await fetch(`${API_URL}/polls/${pollId}`);
     let data = await response.json();
 
@@ -45,7 +45,7 @@ function PollPage() {
     if (selectedOptionId === null) {
       return;
     }
-    const API_URL = "https://capstone-1-polling-app.onrender.com";
+    const API_URL = import.meta.env.VITE_API_URL;
     await fetch(`${API_URL}/polls/${pollId}/vote`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

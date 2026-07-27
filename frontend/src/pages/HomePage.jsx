@@ -8,7 +8,7 @@ function HomePage() {
 
   useEffect(() => {
     async function fetchPolls() {
-      const API_URL = "https://capstone-1-polling-app.onrender.com";
+      const API_URL = import.meta.env.VITE_API_URL;
       const response = await fetch(`${API_URL}/polls`);
       const data = await response.json();
 

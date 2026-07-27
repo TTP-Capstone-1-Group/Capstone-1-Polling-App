@@ -7,7 +7,7 @@ function ResultsPage() {
   const [poll, setPoll] = useState(null);
 
   async function getPoll() {
-    const API_URL = "https://capstone-1-polling-app.onrender.com";
+    const API_URL = import.meta.env.VITE_API_URL; 
     let response = await fetch(`${API_URL}/polls/${pollId}`);
     let data = await response.json();
     setPoll(data);
