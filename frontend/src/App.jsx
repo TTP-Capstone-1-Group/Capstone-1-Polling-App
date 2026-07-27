@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
-import NavBar from "./components/NavBar.jsx";
+import Navbar from "./components/Navbar.jsx";
 import CreatePollPage from "./pages/CreatePollPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import PollPage from "./pages/PollPage.jsx";
@@ -11,7 +10,7 @@ function App() {
   return (
     <>
       {/* This return draws the navigation bar and the page area where route content appears. */}
-      <NavBar />
+      <Navbar />
       <main className="pageShell">
         <Routes>
           <Route path="/" element={<HomePage />} />
