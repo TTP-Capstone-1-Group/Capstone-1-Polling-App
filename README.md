@@ -110,7 +110,7 @@ The app runs at `http://localhost:5173` (Vite's default).
 | --- | --- |
 | Yomara Martinez | backend routes + frontend fetching + database and backend deployment |
 | James Dalton | Project scaffolding & dependency setup + Backend database models & integration + Frontend UI/UX refinement + Ensured team sync and steady project progress|
-| Angel V | [e.g. frontend pages]  (please add yours)|
+| Angel Ventura | Frontend Components and Pages, minor CSS tweaks.
 
 *Roles overlapping is normal — just say who focused where.*
 
