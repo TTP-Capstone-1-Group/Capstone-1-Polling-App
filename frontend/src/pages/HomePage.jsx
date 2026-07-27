@@ -6,18 +6,17 @@ function HomePage() {
   const [polls, setPolls] = useState([])
 
 
-  async function allPolls() {
-
-    const API_URL = "https://capstone-1-polling-app.onrender.com";
-    let response = await fetch(`${API_URL}/polls`);
-    let data = await response.json();
-    console.log(data);
-
-    const sortedPolls = [...data].sort((a, b) => b.id - a.id);
-    setPolls(sortedPolls);
-  }
   useEffect(() => {
-    allPolls();
+    async function fetchPolls() {
+      const API_URL = "https://capstone-1-polling-app.onrender.com";
+      const response = await fetch(`${API_URL}/polls`);
+      const data = await response.json();
+
+      const sortedPolls = [...data].sort((a, b) => b.id - a.id);
+      setPolls(sortedPolls);
+    }
+
+    fetchPolls();
   }, []);
 
   return (
