@@ -8,7 +8,7 @@
 
 | Environment | URL |
 | --- | --- |
-| Frontend (Vercel) | [https://...] |
+| Frontend (Vercel) | https://capstone-1-polling-app.vercel.app/ |
 | Backend API (Render) |https://capstone-1-polling-app.onrender.com/polls|
 
 *Both links must load. This is how we confirm the app is deployed.*
